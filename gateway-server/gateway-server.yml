@@ -8,6 +8,15 @@ spring:
   #     percentage: 1
   cloud:
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "https://localhost:3000"
+            allowedHeaders:
+              - content-type
+            allowedMethods:
+              - GET
+              - POST
       discovery:
         # this enable eureka path
         locator:
