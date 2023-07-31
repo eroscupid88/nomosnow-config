@@ -20,20 +20,20 @@ spring:
           - Path=/api/v1/product/**
           filters:
           - RewritePath=/api/v1/product/(?<path>.*), /$\{path}
-        # - id: openapi
-        #   uri: http://localhost:${server.port}
-        #   predicates:
-        #   - Path=/v3/api-docs/**
-        #   filters:
-        #   - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
+        - id: openapi
+          uri: http://localhost:${server.port}
+          predicates:
+          - Path=/v3/api-docs/**
+          filters:
+          - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
 
     # loadbalancer.ribbon.enabled: false
 
-# springdoc:
-#   swagger-ui:
-#     urls:
-#       - name: product
-#         url: /v3/api-docs/product
+springdoc:
+  swagger-ui:
+    urls:
+      - name: product
+        url: /v3/api-docs/product
 
 
 server:
