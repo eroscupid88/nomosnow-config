@@ -14,9 +14,9 @@ spring:
         #   enabled: true
         #   lower-case-service-id: true
         - id: product-service
-          uri: lb://PRODUCT-SERVICE:5003
+          uri: lb://PRODUCT-SERVICE
           predicates:
-            - Path=/v1/product/**
+            - Method=GET,POST
         # - id: team-service
         #   uri: lb://TEAM-SERVICE
         #   predicates:
