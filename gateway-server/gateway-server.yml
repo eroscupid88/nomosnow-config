@@ -21,7 +21,7 @@ spring:
         #   filters:
         #     - RewritePath=/teamapi/(?<path>.*), /$\{path}
 
-    loadbalancer.ribbon.enabled: false
+    # loadbalancer.ribbon.enabled: false
 
 server:
   port: 7072
