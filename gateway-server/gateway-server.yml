@@ -10,9 +10,17 @@ spring:
     gateway:
       discovery:
         # this enable eureka path
-        locator:
-          enabled: true
-          lower-case-service-id: true
+        # locator:
+        #   enabled: true
+        #   lower-case-service-id: true
+
+        - route_id: ReactiveCompositeDiscoveryClient_PRODUCT-SERVICE
+          uri: lb://PRODUCT-SERVICE
+          predicates:
+            - Path=/api/v1/**
+          filters:
+            - RewritePath=/api/v1/(?<path>.*), /$\{path}
+        
         # - id: team-service
         #   uri: lb://TEAM-SERVICE
         #   predicates:
