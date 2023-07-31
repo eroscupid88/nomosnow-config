@@ -10,11 +10,9 @@ spring:
     gateway:
       discovery:
         # this enable eureka path
-        locator:
-          enabled: true
-          lower-case-service-id: true
-
-
+        # locator:
+        #   enabled: true
+        #   lower-case-service-id: true
         - id: product-service
           uri: lb://PRODUCT-SERVICE:5003
           predicates:
