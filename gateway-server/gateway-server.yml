@@ -13,15 +13,28 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
-        
-        # - id: team-service
-        #   uri: lb://TEAM-SERVICE
+      routes:
+        - id: product-service
+          uri: lb://product-service
+          predicates:
+          - Path=/api/v1/product/**
+          filters:
+          - RewritePath=/api/v1/product/(?<path>.*), /$\{path}
+        # - id: openapi
+        #   uri: http://localhost:${server.port}
         #   predicates:
-        #     - Path=/teamapi/**
+        #   - Path=/v3/api-docs/**
         #   filters:
-        #     - RewritePath=/teamapi/(?<path>.*), /$\{path}
+        #   - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
 
     # loadbalancer.ribbon.enabled: false
+
+# springdoc:
+#   swagger-ui:
+#     urls:
+#       - name: product
+#         url: /v3/api-docs/product
+
 
 server:
   port: 7072
